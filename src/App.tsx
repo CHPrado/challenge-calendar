@@ -1,14 +1,16 @@
 import React from "react";
 
-import Routes from "./routes";
+import { ThemeProvider } from "@material-ui/core";
 
 import "./global.css";
+import Routes from "./routes";
+import theme from "./theme";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Routes />
-    </div>
+    </ThemeProvider>
   );
 }
 

@@ -10,19 +10,17 @@ export default makeStyles((theme: Theme) => ({
   },
   headerContainer: {
     width: "100%",
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   title: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     color: theme.palette.primary.main,
-    fontSize: "50px",
     fontWeight: 600,
   },
   subtitle: {
     color: theme.palette.primary.main,
-    fontSize: "30px",
     fontWeight: 600,
     paddingLeft: "20vw",
   },

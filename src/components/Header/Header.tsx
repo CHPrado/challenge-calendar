@@ -14,8 +14,12 @@ const Header: React.FC<HeaderProps> = ({ selectedDate }) => {
   return (
     <Box className={classes.root}>
       <Box className={classes.headerContainer}>
-        <Typography className={classes.title}>Calendar</Typography>
-        <Typography className={classes.subtitle}>{selectedDate}</Typography>
+        <Typography variant="h3" className={classes.title}>
+          Calendar
+        </Typography>
+        <Typography variant="h5" className={classes.subtitle}>
+          {selectedDate}
+        </Typography>
       </Box>
     </Box>
   );
