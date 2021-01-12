@@ -25,11 +25,11 @@ interface ForecastResponseProps {
 }
 
 const api = axios.create({
-  baseURL: "http://api.openweathermap.org/data/2.5",
+  baseURL: "https://api.openweathermap.org/data/2.5",
 });
 
 const getIcon = (icon: string) => {
-  return `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 };
 
 const formatForecastData = (
