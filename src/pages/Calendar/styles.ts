@@ -20,7 +20,7 @@ export default makeStyles((theme: Theme) => ({
     height: "95%",
     padding: theme.spacing(1, 2, 2, 2),
     borderRadius: theme.spacing(2),
-    background: "lightgray",
+    background: theme.palette.background.paper,
   },
   calendarHeader: {
     display: "flex",
@@ -30,20 +30,22 @@ export default makeStyles((theme: Theme) => ({
       textAlign: "center",
       fontWeight: 600,
       width: "100%",
+      color: theme.palette.text.secondary,
     },
   },
   daysBox: {
     display: "grid",
     gridTemplateColumns: "repeat(7, 1fr)",
     height: "100%",
-    borderTop: "solid 1px",
-    borderLeft: "solid 1px",
+    borderTop: `solid 1px ${theme.palette.divider}`,
+    borderLeft: `solid 1px ${theme.palette.divider}`,
+    color: theme.palette.text.primary,
   },
   dayBox: {
     display: "flex",
     flexDirection: "column",
-    borderRight: "solid 1px",
-    borderBottom: "solid 1px",
+    borderRight: `solid 1px ${theme.palette.divider}`,
+    borderBottom: `solid 1px ${theme.palette.divider}`,
     padding: theme.spacing(1),
   },
   dayNumber: {
@@ -52,21 +54,25 @@ export default makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(1),
   },
   currentDay: {
-    background: "red",
+    background: theme.palette.primary.dark,
     borderRadius: "50%",
     width: theme.spacing(6),
     lineHeight: `${theme.spacing(6)}px`,
     textAlign: "center",
+    color: theme.palette.primary.contrastText,
   },
-  weekDay: {},
+  weekDay: {
+    "& svg": {
+      color: theme.palette.text.primary,
+    },
+  },
   weekend: {
-    background: "blue",
+    background: theme.palette.primary.light,
   },
   disabledDay: {
-    background: "gray",
-    "& p": {
-      opacity: 0.6,
-    },
+    background: theme.palette.secondary.light,
+    color: theme.palette.text.secondary,
+    "& p": { fontWeight: 400 },
   },
   scrollableBox: {
     position: "relative",

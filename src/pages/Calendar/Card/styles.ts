@@ -12,10 +12,14 @@ export default makeStyles((theme: Theme) => ({
   },
   cardText: {
     fontSize: "small",
+    fontWeight: 600,
     wordBreak: "break-word",
+    "& span": {
+      fontWeight: 400,
+      whiteSpace: "nowrap",
+    },
   },
   deleteIcon: {
-    // color: "red",
     fontSize: "16px",
   },
 }));

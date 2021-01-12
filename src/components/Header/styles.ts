@@ -1,12 +1,11 @@
 import { Theme, makeStyles } from "@material-ui/core/styles";
 
-import springImg from "../../assets/images/spring.png";
-
 export default makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
     backgroundSize: "100% 100%",
-    backgroundImage: `url(${springImg})`,
+    // backgroundImage: `url(${springImg})`,
+    background: theme.palette.primary.dark,
   },
   headerContainer: {
     width: "100%",
@@ -16,11 +15,11 @@ export default makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     fontWeight: 600,
   },
   subtitle: {
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
     fontWeight: 600,
     paddingLeft: "20vw",
   },

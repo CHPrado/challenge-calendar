@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
+import theme from "../../theme";
 import useStyles from "./styles";
 
 interface InputCityProps {
@@ -65,7 +66,9 @@ const InputCity: React.FC<InputCityProps> = ({ value, onSelect }) => {
             <Box className={classes.suggestionsBox}>
               {suggestions.map((suggestion) => {
                 const style = {
-                  backgroundColor: suggestion.active ? "lightgray" : "#FFF",
+                  backgroundColor: suggestion.active
+                    ? theme.palette.primary.light
+                    : theme.palette.background.default,
                 };
 
                 return (

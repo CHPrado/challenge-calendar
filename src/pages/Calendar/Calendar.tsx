@@ -96,6 +96,7 @@ const Calendar = () => {
                         <IconButton
                           onClick={() => addReminder(date)}
                           size="small"
+                          disabled={!isSameMonth}
                         >
                           <AddAlertOutlinedIcon className={classes.icon} />
                         </IconButton>
@@ -104,6 +105,7 @@ const Calendar = () => {
                         <IconButton
                           onClick={() => clearDayReminders(date)}
                           size="small"
+                          disabled={!isSameMonth}
                         >
                           <EventBusyOutlinedIcon className={classes.icon} />
                         </IconButton>

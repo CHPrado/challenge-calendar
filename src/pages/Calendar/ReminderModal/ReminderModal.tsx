@@ -22,6 +22,7 @@ import moment, { Moment } from "moment";
 import { Forecast, InputCity } from "../../../components";
 import { useReminders } from "../../../hooks";
 import { ReminderProps } from "../../../interfaces";
+import theme from "../../../theme";
 import useStyles from "./styles";
 
 interface ReminderModalProps {
@@ -50,7 +51,9 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
   const [dateTime, setDateTime] = useState<Moment>(
     (reminder && moment(reminder?.dateTime)) || selectedDate || moment()
   );
-  const [color, setColor] = useState(reminder?.color || "green");
+  const [color, setColor] = useState(
+    reminder?.color || theme.palette.primary.main
+  );
   const [city, setCity] = useState(reminder?.city || { description: "" });
   const [error, setError] = useState(false);
 
@@ -147,7 +150,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
 
             <Box className={classes.fieldGroup}>
               <Box className={classes.iconBox}>
-                <LocationOnOutlinedIcon />
+                <LocationOnOutlinedIcon className={classes.icon} />
               </Box>
               <InputCity
                 value={city?.description}
@@ -156,7 +159,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
             </Box>
             <Box className={classes.fieldGroup}>
               <Box className={classes.iconBox}>
-                <SubjectOutlinedIcon />
+                <SubjectOutlinedIcon className={classes.icon} />
               </Box>
               <TextField
                 placeholder="Add a description"

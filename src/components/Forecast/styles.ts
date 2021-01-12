@@ -10,6 +10,7 @@ export default makeStyles((theme: Theme) => ({
   title: {
     textAlign: "center",
     paddingTop: theme.spacing(4),
+    color: theme.palette.primary.dark,
   },
   temp: {
     fontSize: "30px",
@@ -17,6 +18,7 @@ export default makeStyles((theme: Theme) => ({
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center",
+    color: theme.palette.text.primary,
   },
   detailsBox: {
     display: "flex",
@@ -25,9 +27,11 @@ export default makeStyles((theme: Theme) => ({
   },
   weather: {
     fontWeight: 600,
+    color: theme.palette.text.primary,
   },
   description: {
     fontSize: "small",
+    color: theme.palette.text.secondary,
   },
   noData: {
     display: "flex",
@@ -35,6 +39,7 @@ export default makeStyles((theme: Theme) => ({
     justifyContent: "center",
     height: "100%",
     fontSize: "small",
+    color: theme.palette.text.secondary,
   },
   loading: {
     display: "flex",

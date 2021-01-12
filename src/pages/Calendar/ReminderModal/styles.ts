@@ -1,5 +1,7 @@
 import { Theme, makeStyles } from "@material-ui/core/styles";
 
+import palette from "../../../theme/palette";
+
 export default makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
@@ -10,11 +12,11 @@ export default makeStyles((theme: Theme) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    background: "rgba(0, 0, 0, 0.5)",
+    background: "rgba(0, 0, 0, 0.3)",
     zIndex: 99,
   },
   reminderBox: {
-    background: "#FFF",
+    background: theme.palette.background.paper,
     borderRadius: theme.spacing(2),
     padding: theme.spacing(2),
   },
@@ -27,10 +29,12 @@ export default makeStyles((theme: Theme) => ({
   },
   headerTitle: {
     width: "100%",
+    color: palette.text.secondary,
   },
   headerTitleCustom: {
     fontSize: "18px",
     fontWeight: 600,
+    color: theme.palette.text.primary,
   },
   content: {
     display: "flex",
@@ -50,6 +54,9 @@ export default makeStyles((theme: Theme) => ({
   },
   iconBox: {
     width: theme.spacing(9),
+  },
+  icon: {
+    color: theme.palette.text.secondary,
   },
   weatherBox: {
     display: "flex",

@@ -4,6 +4,7 @@ import { Box, IconButton, Tooltip, Typography } from "@material-ui/core";
 import { CloseOutlined } from "@material-ui/icons";
 import moment from "moment";
 
+import { contrastColor } from "../../../helpers/";
 import { useReminders } from "../../../hooks";
 import { ReminderProps } from "../../../interfaces";
 import ReminderModal from "../ReminderModal";
@@ -35,12 +36,17 @@ const Card: React.FC<CardProps> = ({ reminder, setReminders }) => {
         <Typography
           onClick={() => setOpenReminder(true)}
           className={classes.cardText}
-        >{`${moment(reminder.dateTime).format("h:mma")} ${
-          reminder.title
-        }`}</Typography>
+          style={{ color: contrastColor(reminder.color) }}
+        >
+          <span>{moment(reminder.dateTime).format("h:mma")}</span>
+          {` ${reminder.title}`}
+        </Typography>
         <Tooltip title="Remove reminder">
           <IconButton size="small" onClick={handleDelete}>
-            <CloseOutlined className={classes.deleteIcon} />
+            <CloseOutlined
+              className={classes.deleteIcon}
+              style={{ color: contrastColor(reminder.color) }}
+            />
           </IconButton>
         </Tooltip>
       </Box>

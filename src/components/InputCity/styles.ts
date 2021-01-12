@@ -8,7 +8,7 @@ export default makeStyles((theme: Theme) => ({
   suggestionsBox: {
     position: "absolute",
     width: "inherit",
-    background: "#FFF",
+    background: theme.palette.background.paper,
     boxShadow: "3px 5px 10px 6px rgba(0, 0, 0, 0.4)",
     padding: theme.spacing(1, 0, 1, 0),
     zIndex: 999,
@@ -19,10 +19,11 @@ export default makeStyles((theme: Theme) => ({
   },
   cityName: {
     fontSize: "14px",
+    color: theme.palette.text.primary,
   },
   cityDetails: {
     fontSize: "small",
-    color: "gray",
+    color: theme.palette.text.secondary,
   },
   icon: {
     margin: theme.spacing(1, 2, 0, 0),
