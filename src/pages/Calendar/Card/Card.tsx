@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ reminder, setReminders }) => {
         <Typography
           onClick={() => setOpenReminder(true)}
           className={classes.cardText}
-        >{`${moment(reminder.dateTime).format("HH:mm")} ${
+        >{`${moment(reminder.dateTime).format("h:mma")} ${
           reminder.title
         }`}</Typography>
         <Tooltip title="Remove reminder">

@@ -19,7 +19,7 @@ import {
 import { ColorPicker } from "material-ui-color";
 import moment, { Moment } from "moment";
 
-import { InputCity } from "../../../components";
+import { Forecast, InputCity } from "../../../components";
 import { useReminders } from "../../../hooks";
 import { ReminderProps } from "../../../interfaces";
 import useStyles from "./styles";
@@ -109,61 +109,70 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
         </Box>
 
         <Box className={classes.content}>
-          <TextField
-            placeholder="Add a title"
-            value={title}
-            size="small"
-            onChange={(event) => setTitle(event.target.value)}
-            inputProps={{ maxLength: 15 }}
-            InputProps={{
-              classes: {
-                input: classes.headerTitleCustom,
-              },
-            }}
-            fullWidth
-          />
-          <Box className={classes.fieldGroup}>
-            <ColorPicker
-              hideTextfield
-              value={color}
-              onChange={(value) => {
-                setColor(`#${value.hex}`);
-              }}
-            />
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDateTimePicker
-                value={dateTime}
-                onChange={handleDateChange}
-                ampm={false}
-                format="yyyy/MM/dd HH:mm"
-                onError={(error) => {
-                  setError(!!error);
-                }}
-                fullWidth
-              />
-            </MuiPickersUtilsProvider>
-          </Box>
-
-          <Box className={classes.fieldGroup}>
-            <Box className={classes.IconBox}>
-              <LocationOnOutlinedIcon />
-            </Box>
-            <InputCity value={city?.description} onSelect={handleCitySelect} />
-          </Box>
-          <Box className={classes.fieldGroup}>
-            <Box className={classes.IconBox}>
-              <SubjectOutlinedIcon />
-            </Box>
+          <Box>
             <TextField
-              placeholder="Add a description"
-              value={description}
-              onChange={(event) => setDescription(event.target.value)}
-              variant="filled"
-              multiline
-              rows={2}
-              inputProps={{ maxLength: 30, width: "100%" }}
+              placeholder="Add a title"
+              value={title}
+              size="small"
+              onChange={(event) => setTitle(event.target.value)}
+              inputProps={{ maxLength: 15 }}
+              InputProps={{
+                classes: {
+                  input: classes.headerTitleCustom,
+                },
+              }}
               fullWidth
             />
+            <Box className={classes.fieldGroup}>
+              <ColorPicker
+                hideTextfield
+                value={color}
+                onChange={(value) => {
+                  setColor(`#${value.hex}`);
+                }}
+              />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDateTimePicker
+                  value={dateTime}
+                  onChange={handleDateChange}
+                  ampm={true}
+                  format="yyyy/MM/dd h:mma"
+                  onError={(error) => {
+                    setError(!!error);
+                  }}
+                  fullWidth
+                />
+              </MuiPickersUtilsProvider>
+            </Box>
+
+            <Box className={classes.fieldGroup}>
+              <Box className={classes.iconBox}>
+                <LocationOnOutlinedIcon />
+              </Box>
+              <InputCity
+                value={city?.description}
+                onSelect={handleCitySelect}
+              />
+            </Box>
+            <Box className={classes.fieldGroup}>
+              <Box className={classes.iconBox}>
+                <SubjectOutlinedIcon />
+              </Box>
+              <TextField
+                placeholder="Add a description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+                variant="filled"
+                multiline
+                rows={2}
+                inputProps={{ maxLength: 30, width: "100%" }}
+                fullWidth
+              />
+            </Box>
+          </Box>
+
+          <Box className={classes.weatherBox}>
+            <Forecast dateTime={dateTime} coordinates={city.coordinates} />
           </Box>
         </Box>
 

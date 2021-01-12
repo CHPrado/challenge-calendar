@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-places-autocomplete": "^7.2.6",
     "@types/react-router-dom": "^5.1.7",
+    "axios": "^0.21.1",
     "date-fns": "2.11.1",
     "material-ui-color": "^0.4.6",
     "material-ui-popup-state": "^1.7.1",

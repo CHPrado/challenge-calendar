@@ -14,7 +14,6 @@ export default makeStyles((theme: Theme) => ({
     zIndex: 99,
   },
   reminderBox: {
-    width: "400px",
     background: "#FFF",
     borderRadius: theme.spacing(2),
     padding: theme.spacing(2),
@@ -24,7 +23,6 @@ export default makeStyles((theme: Theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     paddingLeft: theme.spacing(4),
-    // background: "gray",
     borderRadius: theme.spacing(1, 1, 0, 0),
   },
   headerTitle: {
@@ -36,7 +34,6 @@ export default makeStyles((theme: Theme) => ({
   },
   content: {
     display: "flex",
-    flexDirection: "column",
     padding: theme.spacing(4),
   },
   footer: {
@@ -51,7 +48,13 @@ export default makeStyles((theme: Theme) => ({
     display: "flex",
     marginTop: theme.spacing(3),
   },
-  IconBox: {
+  iconBox: {
     width: theme.spacing(9),
+  },
+  weatherBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: theme.spacing(8),
   },
 }));

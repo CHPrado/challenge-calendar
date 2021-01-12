@@ -21,7 +21,7 @@ const useReminders = () => {
     const reminders = getReminders();
 
     reminders.push({
-      id: moment().format("yyyyMMDHHmmssSSS"),
+      id: moment().format("yyyyMMDHHmmssSSSa"),
       title: title || "(No title)",
       description,
       dateTime: dateTime.format("yyyy/MM/D HH:mm"),

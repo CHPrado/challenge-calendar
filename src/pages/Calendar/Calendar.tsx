@@ -77,9 +77,13 @@ const Calendar = () => {
                 isWeekend ? classes.weekend : ""
               } ${isSameMonth ? classes.weekDay : classes.disabledDay}`;
 
-              const dayReminders = reminders.filter((reminder) => {
-                return date.isSame(moment(reminder.dateTime), "day");
-              }) as ReminderProps[];
+              const dayReminders = reminders
+                .filter((reminder) => {
+                  return date.isSame(moment(reminder.dateTime), "day");
+                })
+                .sort((a, b) => {
+                  return moment(a.dateTime).diff(moment(b.dateTime), "minutes");
+                }) as ReminderProps[];
 
               return (
                 <Box key={index} className={boxClasses}>
