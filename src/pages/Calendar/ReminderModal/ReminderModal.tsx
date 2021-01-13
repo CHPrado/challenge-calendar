@@ -132,7 +132,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
               value={title}
               size="small"
               onChange={(event) => setTitle(event.target.value)}
-              inputProps={{ maxLength: 15 }}
+              inputProps={{ maxLength: 30 }}
               InputProps={{
                 classes: {
                   input: classes.headerTitleCustom,
@@ -181,8 +181,8 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
                 onChange={(event) => setDescription(event.target.value)}
                 variant="filled"
                 multiline
-                rows={2}
-                inputProps={{ maxLength: 30, width: "100%" }}
+                rows={5}
+                inputProps={{ maxLength: 100, width: "100%" }}
                 fullWidth
               />
             </Box>
