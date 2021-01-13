@@ -4,6 +4,7 @@ import { Box, IconButton, Tooltip, Typography } from "@material-ui/core";
 import { CloseOutlined } from "@material-ui/icons";
 import moment from "moment";
 
+import { AlertDialog, AlertDialogProps } from "../../../components";
 import { contrastColor } from "../../../helpers/";
 import { useReminders } from "../../../hooks";
 import { ReminderProps } from "../../../interfaces";
@@ -20,10 +21,22 @@ const Card: React.FC<CardProps> = ({ reminder, setReminders }) => {
   const { removeReminder, getReminders } = useReminders();
 
   const [openReminder, setOpenReminder] = useState(false);
+  const [dialog, setDialog] = useState<AlertDialogProps>({ open: false });
 
   const handleDelete = () => {
-    removeReminder(reminder.id);
-    setReminders(getReminders());
+    setDialog({
+      open: true,
+      title: "Remove reminder",
+      description: `Wish to remove the reminder for ${moment(
+        reminder.dateTime
+      ).format("yyyy/MM/D HH:mm")} ${reminder.title}?`,
+      onClose: () => setDialog({ open: false }),
+      onConfirm: () => {
+        removeReminder(reminder.id);
+        setReminders(getReminders());
+        setDialog({ open: false });
+      },
+    });
   };
 
   const onReminderClose = () => {
@@ -58,6 +71,8 @@ const Card: React.FC<CardProps> = ({ reminder, setReminders }) => {
           setReminders={setReminders}
         />
       )}
+
+      <AlertDialog {...dialog} />
     </>
   );
 };

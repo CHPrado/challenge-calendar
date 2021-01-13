@@ -19,7 +19,12 @@ import {
 import { ColorPicker } from "material-ui-color";
 import moment, { Moment } from "moment";
 
-import { Forecast, InputCity } from "../../../components";
+import {
+  Forecast,
+  InputCity,
+  AlertDialog,
+  AlertDialogProps,
+} from "../../../components";
 import { useReminders } from "../../../hooks";
 import { ReminderProps } from "../../../interfaces";
 import theme from "../../../theme";
@@ -56,6 +61,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
   );
   const [city, setCity] = useState(reminder?.city || { description: "" });
   const [error, setError] = useState(false);
+  const [dialog, setDialog] = useState<AlertDialogProps>({ open: false });
 
   const handleDateChange = (date: Date | null) => {
     setDateTime(moment(date));
@@ -81,10 +87,21 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
     onClose();
   };
 
-  const handleDelete = (reminderId: string) => {
-    removeReminder(reminderId);
-    setReminders(getReminders());
-    onClose();
+  const handleDelete = (reminder: ReminderProps) => {
+    setDialog({
+      open: true,
+      title: "Remove reminder",
+      description: `Wish to remove the reminder for ${moment(
+        reminder.dateTime
+      ).format("yyyy/MM/D HH:mm")} ${reminder.title}?`,
+      onClose: () => setDialog({ open: false }),
+      onConfirm: () => {
+        removeReminder(reminder.id);
+        setReminders(getReminders());
+        onClose();
+        setDialog({ open: false });
+      },
+    });
   };
 
   return (
@@ -96,10 +113,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
           </Typography>
           {reminder && (
             <Tooltip title="Remove reminder">
-              <IconButton
-                size="small"
-                onClick={() => handleDelete(reminder.id)}
-              >
+              <IconButton size="small" onClick={() => handleDelete(reminder)}>
                 <DeleteOutlined fontSize="small" />
               </IconButton>
             </Tooltip>
@@ -180,7 +194,7 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
         </Box>
 
         <Box className={classes.footer}>
-          <Button variant="outlined" color="primary" onClick={handleClickClose}>
+          <Button color="primary" onClick={handleClickClose}>
             Cancel
           </Button>
           <Button
@@ -194,6 +208,8 @@ const ReminderModal: React.FC<ReminderModalProps> = ({
           </Button>
         </Box>
       </Box>
+
+      <AlertDialog {...dialog} />
     </Box>
   );
 };

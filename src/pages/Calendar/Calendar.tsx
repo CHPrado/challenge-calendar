@@ -9,7 +9,7 @@ import AddAlertOutlinedIcon from "@material-ui/icons/AddAlertOutlined";
 import EventBusyOutlinedIcon from "@material-ui/icons/EventBusyOutlined";
 import moment, { Moment } from "moment";
 
-import { Header } from "../../components";
+import { Header, AlertDialog, AlertDialogProps } from "../../components";
 import { calendarDays } from "../../helpers";
 import { useReminders } from "../../hooks";
 import { ReminderProps } from "../../interfaces";
@@ -27,6 +27,7 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState<Moment>(currentDate);
   const [openReminder, setOpenReminder] = useState(false);
   const [reminders, setReminders] = useState(getReminders());
+  const [dialog, setDialog] = useState<AlertDialogProps>({ open: false });
 
   const previousMonth = () => {
     setMonth(moment(month).subtract(1, "month"));
@@ -42,8 +43,19 @@ const Calendar = () => {
   };
 
   const clearDayReminders = (moment: Moment) => {
-    clearDay(moment);
-    setReminders(getReminders());
+    setDialog({
+      open: true,
+      title: "Remove daily reminders",
+      description: `Wish to remove reminders for ${moment.format(
+        "yyyy/MM/D"
+      )}?`,
+      onClose: () => setDialog({ open: false }),
+      onConfirm: () => {
+        clearDay(moment);
+        setReminders(getReminders());
+        setDialog({ open: false });
+      },
+    });
   };
 
   const onReminderClose = () => {
@@ -148,6 +160,8 @@ const Calendar = () => {
           setReminders={setReminders}
         />
       )}
+
+      <AlertDialog {...dialog} />
     </Box>
   );
 };
