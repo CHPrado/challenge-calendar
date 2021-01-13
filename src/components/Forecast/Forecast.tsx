@@ -39,6 +39,7 @@ const Forecast: React.FC<ForecastProps> = ({ dateTime, coordinates }) => {
   useEffect(() => {
     if (dateTime && coordinates) {
       setIsLoading(true);
+      setUnit("imperial");
 
       forecastApi
         .getForecast(dateTime, {
