@@ -13,6 +13,7 @@ export default makeStyles((theme: Theme) => ({
     height: "100%",
     width: "100%",
     paddingTop: theme.spacing(1),
+    background: theme.palette.background.default,
   },
   calendarBox: {
     display: "flex",
