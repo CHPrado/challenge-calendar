@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, IconButton, Tooltip, Typography } from "@material-ui/core";
+import { Box, IconButton, Paper, Tooltip, Typography } from "@material-ui/core";
 import {
   NavigateNextOutlined,
   NavigateBeforeOutlined,
@@ -60,7 +60,7 @@ const Calendar = () => {
           </IconButton>
         </Tooltip>
 
-        <Box className={classes.calendarBox}>
+        <Paper className={classes.calendarBox}>
           <Box className={classes.calendarHeader}>
             {weekDays.map((weekDay) => (
               <Typography key={weekDay}>{weekDay}</Typography>
@@ -132,7 +132,7 @@ const Calendar = () => {
               );
             })}
           </Box>
-        </Box>
+        </Paper>
 
         <Tooltip title="Next Month" placement="left-end">
           <IconButton onClick={nextMonth} size="small">

@@ -11,6 +11,7 @@ export default makeStyles((theme: Theme) => ({
     cursor: "pointer",
   },
   cardText: {
+    width: "100%",
     fontSize: "small",
     fontWeight: 600,
     wordBreak: "break-word",

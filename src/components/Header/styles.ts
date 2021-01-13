@@ -4,7 +4,6 @@ export default makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
     backgroundSize: "100% 100%",
-    // backgroundImage: `url(${springImg})`,
     background: theme.palette.primary.dark,
   },
   headerContainer: {
@@ -15,12 +14,15 @@ export default makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: theme.palette.primary.contrastText,
     fontWeight: 600,
+    height: "100%",
+    color: theme.palette.primary.contrastText,
   },
   subtitle: {
-    color: theme.palette.primary.contrastText,
+    position: "relative",
+    bottom: "40%",
     fontWeight: 600,
     paddingLeft: "20vw",
+    color: theme.palette.primary.contrastText,
   },
 }));
