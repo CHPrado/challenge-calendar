@@ -18,7 +18,7 @@ If there is any dependency problems in the installation, adding `--legacy-peer-d
 
 You have to setup your Google API key in the file `public/index.html`:
 
-```javascript
+```html
 <script src="https://maps.googleapis.com/maps/api/js?key=<YOUR_KEY>&libraries=places"></script>
 ```
 
