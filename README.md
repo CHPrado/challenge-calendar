@@ -14,6 +14,20 @@ If there is any dependency problems in the installation, adding `--legacy-peer-d
 
 ### `npm install --legacy-peer-deps`
 
+## API Keys
+
+You have to setup your Google API key in the file `public/index.html`:
+
+```javascript
+<script src="https://maps.googleapis.com/maps/api/js?key=<YOUR_KEY>&libraries=places"></script>
+```
+
+And your Open Weather API Key in the file `src/services/forecastApi/forecastApi.ts`:
+
+```javascript
+const API_KEY = "YOUR_KEY"
+```
+
 ## Run the app
 
 In the project directory, you can run:
